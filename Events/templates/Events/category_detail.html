@@ -1,0 +1,38 @@
+{% extends "Events/base.html" %}
+{%block content%}
+ <div class="container" style="border-left-width: 100px;margin-top: 5rem;">
+  <h1 class="cat-name mb-4" style="font-size: 20px;line-height: 1.5;font-weight: 600"> {{event_category.name}}</h1>
+  {% for event in event_category.category.all %}
+  <a style="text-decoration: none" href="{{event.get_absolute_url}}">
+    <div class="card" style="border:none; background-color: #e9e9e9">
+            <div class="row no-gutters">
+                <div class="col-sm-5">
+                    <img src="{{event.event_img.url}}" style="border-radius: 25px; height: 150px" alt="{{event.title}}' picture">
+                </div>
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <div class="card-title mal event-topic code">{{event.event_date|date:"D, N j, h:i A"}}</div>
+                        <p class="card-text mal" style="color:#000">{{event.title}}</p>
+                          <br>
+                          <div class="row">
+                          {% for i in event.attend.all%}
+                            {% if forloop.counter0 < 3%}
+                            <div class="column">
+                              <a href="{{i.profile.get_public_url}}">
+                              <img style="border-radius: 50%;width:2em; height: 2em" src="{{i.profile.img.url}}" class="user"/>
+                            </a>
+                            </div>
+                            {% endif %}
+                          {% endfor %}
+                          <span class="mt-2 ml-2">{{event.attend.count}}</span>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+        <hr>
+  {% endfor %}
+</div>
+{% endblock content%}
+

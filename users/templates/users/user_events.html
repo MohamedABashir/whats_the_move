@@ -1,0 +1,117 @@
+{% extends "Events/base.html" %}
+{% load crispy_forms_tags%}
+{%block content%}
+<!-- https://codepen.io/brightprogrammer -->
+<div class="container">
+  <div class="profile-header">
+    <div class="profile-img">
+      <img src="{{ user.profile.img.url }}" width="200" alt="Profile Image">
+    </div>
+    <div class="profile-nav-info">
+      <h3 class="user-name">{{user.username}}</h3>
+      <div class="address">
+        <p id="state" class="state">Minneapois,</p>
+        <span id="country" class="country">USA.</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="main-bd">
+    <div class="left-side">
+      <div class="profile-side">
+        <p class="user-mail"><i class="fa fa-envelope"></i> {{user.email}}</p>
+        <div class="user-bio ml-2">
+          <h3 style="color:#417690;">Bio</h3>
+          <p class="bio">
+            {{user.profile.bio}}
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="nav">
+        <ul>
+          <li onclick="tabs(0)" class="user-post active">Events</li>
+          <li onclick="tabs(1)" class="user-setting"> Comment</li>
+        </ul>
+      </div>
+      <div class="profile-body">
+        <div class="profile-posts tab">
+          <h1>{{user.username}} Events</h1>   
+          <div class="grid-container">
+          {% for event in events %}
+            <div class="grid-item">
+              <a style="text-decoration: none" href="{{event.get_absolute_url}}">
+                    <div class="card-title  event-topic code">{{event.event_date|date:"D, N j, h:i A"}}</div>
+                    <div>
+                       <p class="card-text " style="color:#000">{{event.title}}</p>
+                    </div>
+                </a> 
+            </div>                         
+          {% endfor %}
+        </div>
+        </div>
+        <div class="profile-settings tab" style="padding-top: 10px">
+          <div class="account-setting">
+            <h1>{{user.username}} Comments</h1>
+            {% for comment in comments %}
+            <div class="grid-item">
+              <a style="text-decoration: none" href="{{comment.event_url}}">
+                    <!-- <div class="card-title  event-topic code">{{event.event_date|date:"D, N j, h:i A"}}</div> -->
+                    <div>
+                       <p class="card-text " style="color:#000">{{comment}}</p>
+                    </div>
+                </a> 
+            </div>                         
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"crossorigin="anonymous"></script>
+<script>
+    $(".nav ul li").click(function() {
+  $(this)
+    .addClass("active")
+    .siblings()
+    .removeClass("active");
+});
+
+const tabBtn = document.querySelectorAll(".nav ul li");
+const tab = document.querySelectorAll(".tab");
+
+function tabs(panelIndex) {
+  tab.forEach(function(node) {
+    node.style.display = "none";
+  });
+  tab[panelIndex].style.display = "block";
+}
+tabs(0);
+
+let bio = document.querySelector(".bio");
+const bioMore = document.querySelector("#see-more-bio");
+const bioLength = bio.innerText.length;
+
+function bioText() {
+  bio.oldText = bio.innerText;
+
+  bio.innerText = bio.innerText.substring(0, 100) + "...";
+  bio.innerHTML += `<span onclick='addLength()' id='see-more-bio'>See More</span>`;
+}
+//        console.log(bio.innerText)
+
+bioText();
+
+function addLength() {
+  bio.innerText = bio.oldText;
+  bio.innerHTML +=
+    "&nbsp;" + `<span onclick='bioText()' id='see-less-bio'>See Less</span>`;
+  document.getElementById("see-less-bio").addEventListener("click", () => {
+    document.getElementById("see-less-bio").style.display = "none";
+  });
+}
+
+</script>
+{% endblock content %}

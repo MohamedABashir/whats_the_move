@@ -1,0 +1,116 @@
+ID,STATE_CODE,STATE_NAME,CITY,COUNTY,LATITUDE,LONGITUDE
+12372,MN,Minnesota,Ada,Norman,47.315597,-96.503569
+12373,MN,Minnesota,Adams,Mower,43.559119,-92.730494
+12374,MN,Minnesota,Adolph,"Saint Louis",46.841,-92.2201
+12375,MN,Minnesota,Adrian,Nobles,43.619683,-95.927261
+12376,MN,Minnesota,Afton,Washington,44.86965,-92.823358
+12377,MN,Minnesota,"Ah Gwah Ching",Cass,46.242778,-93.274722
+12378,MN,Minnesota,Aitkin,Aitkin,46.479929,-93.645413
+12379,MN,Minnesota,Akeley,Hubbard,47.000987,-94.72343
+12380,MN,Minnesota,Albany,Stearns,45.615114,-94.574022
+12381,MN,Minnesota,"Albert Lea",Freeborn,43.653678,-93.370672
+12382,MN,Minnesota,Alberta,Stevens,45.557086,-96.049772
+12383,MN,Minnesota,Albertville,Wright,45.253425,-93.646899
+12384,MN,Minnesota,Alborn,"Saint Louis",46.978229,-92.557937
+12385,MN,Minnesota,Alden,Freeborn,43.646586,-93.582307
+12386,MN,Minnesota,Aldrich,Wadena,46.402538,-94.992017
+12387,MN,Minnesota,Alexandria,Douglas,45.881747,-95.381994
+12388,MN,Minnesota,Almelund,Chisago,45.491389,-92.785278
+12389,MN,Minnesota,Alpha,Jackson,43.594594,-94.905088
+12390,MN,Minnesota,Altura,Winona,44.136114,-91.974474
+12391,MN,Minnesota,Alvarado,Marshall,48.201968,-96.991457
+12392,MN,Minnesota,Amboy,"Blue Earth",43.890326,-94.177353
+12393,MN,Minnesota,Andover,Anoka,45.25068,-93.284531
+12394,MN,Minnesota,"Angle Inlet","Lake Of The Woods",49.324924,-95.090248
+12395,MN,Minnesota,Angora,"Saint Louis",47.757738,-92.641332
+12396,MN,Minnesota,Annandale,Wright,45.248272,-94.106072
+12397,MN,Minnesota,Anoka,Anoka,45.238537,-93.407822
+12398,MN,Minnesota,Appleton,Swift,45.20543,-95.994872
+12399,MN,Minnesota,Arco,Lincoln,44.409147,-96.199913
+12400,MN,Minnesota,Argyle,Marshall,48.331418,-96.867096
+12401,MN,Minnesota,Arlington,Sibley,44.615279,-94.076195
+12402,MN,Minnesota,Ashby,Grant,46.078066,-95.821417
+12403,MN,Minnesota,Askov,Pine,46.196408,-92.752812
+12404,MN,Minnesota,Atwater,Kandiyohi,45.111645,-94.793779
+12405,MN,Minnesota,Audubon,Becker,46.871887,-95.988136
+12406,MN,Minnesota,Aurora,"Saint Louis",47.495096,-92.241486
+12407,MN,Minnesota,Austin,Mower,43.669538,-92.978374
+12408,MN,Minnesota,Avoca,Murray,43.970553,-95.600152
+12409,MN,Minnesota,Avon,Stearns,45.612168,-94.436029
+12410,MN,Minnesota,Babbitt,"Saint Louis",47.709121,-91.956951
+12411,MN,Minnesota,Backus,Cass,46.869905,-94.395918
+12412,MN,Minnesota,Badger,Roseau,48.791294,-96.096523
+12413,MN,Minnesota,Bagley,Clearwater,47.487024,-95.41334
+12414,MN,Minnesota,Balaton,Lyon,44.225253,-95.88377
+12415,MN,Minnesota,Barnesville,Clay,46.677296,-96.37269
+12416,MN,Minnesota,Barnum,Carlton,46.519616,-92.629167
+12417,MN,Minnesota,Barrett,Grant,45.899555,-95.875391
+12418,MN,Minnesota,Barry,"Big Stone",45.547446,-96.560527
+12419,MN,Minnesota,"Battle Lake","Otter Tail",46.314175,-95.714395
+12420,MN,Minnesota,Baudette,"Lake Of The Woods",48.692724,-94.599479
+12421,MN,Minnesota,Baxter,"Crow Wing",46.343333,-94.286389
+12422,MN,Minnesota,Bayport,Washington,45.021405,-92.784375
+12423,MN,Minnesota,Beardsley,"Big Stone",45.553855,-96.706013
+12424,MN,Minnesota,"Beaver Bay",Lake,47.257778,-91.300278
+12425,MN,Minnesota,"Beaver Creek",Rock,43.622343,-96.369771
+12426,MN,Minnesota,Becker,Sherburne,45.436539,-93.840966
+12427,MN,Minnesota,Bejou,Mahnomen,47.44909,-95.945423
+12428,MN,Minnesota,Belgrade,Stearns,45.486522,-94.969877
+12429,MN,Minnesota,"Belle Plaine",Scott,44.613852,-93.760394
+12430,MN,Minnesota,Bellingham,"Lac Qui Parle",45.155626,-96.32235
+12431,MN,Minnesota,Beltrami,Polk,47.572118,-96.454864
+12432,MN,Minnesota,Belview,Redwood,44.605486,-95.317757
+12433,MN,Minnesota,Bemidji,Beltrami,47.488071,-94.848809
+12434,MN,Minnesota,Bena,Cass,47.347732,-94.251921
+12435,MN,Minnesota,Benedict,Hubbard,47.158056,-94.690278
+12436,MN,Minnesota,Benson,Swift,45.312904,-95.576644
+12437,MN,Minnesota,Bertha,Todd,46.251457,-95.035733
+12438,MN,Minnesota,Bethel,Anoka,45.394114,-93.233088
+12439,MN,Minnesota,"Big Falls",Koochiching,48.156028,-93.729629
+12440,MN,Minnesota,"Big Lake",Sherburne,45.350648,-93.739917
+12441,MN,Minnesota,Bigelow,Nobles,43.533612,-95.651527
+12442,MN,Minnesota,Bigfork,Itasca,47.750227,-93.670699
+12443,MN,Minnesota,"Bingham Lake",Cottonwood,43.894155,-95.04571
+12444,MN,Minnesota,Birchdale,Koochiching,48.624696,-94.167652
+12445,MN,Minnesota,"Bird Island",Renville,44.750729,-94.871634
+12446,MN,Minnesota,Biwabik,"Saint Louis",47.533056,-92.34
+12447,MN,Minnesota,Blackduck,Beltrami,47.738136,-94.496072
+12448,MN,Minnesota,Blomkest,Kandiyohi,44.939512,-95.063955
+12449,MN,Minnesota,"Blooming Prairie",Steele,43.897732,-93.06081
+12450,MN,Minnesota,"Blue Earth",Faribault,43.639426,-94.092379
+12451,MN,Minnesota,Bluffton,"Otter Tail",46.491795,-95.223592
+12452,MN,Minnesota,Bock,"Mille Lacs",45.784427,-93.553658
+12453,MN,Minnesota,Borup,Norman,47.189641,-96.552969
+12454,MN,Minnesota,Bovey,Itasca,47.286788,-93.372322
+12455,MN,Minnesota,Bowlus,Morrison,45.81212,-94.417533
+12456,MN,Minnesota,Bowstring,Itasca,47.543056,-93.796389
+12457,MN,Minnesota,Boyd,"Lac Qui Parle",44.850725,-95.942102
+12458,MN,Minnesota,Braham,Isanti,45.717547,-93.203695
+12459,MN,Minnesota,Brainerd,"Crow Wing",46.357219,-94.201873
+12460,MN,Minnesota,Brandon,Douglas,46.0039,-95.578769
+12461,MN,Minnesota,Breckenridge,Wilkin,46.27966,-96.56222
+12462,MN,Minnesota,Brewster,Nobles,43.703223,-95.480676
+12463,MN,Minnesota,Bricelyn,Faribault,43.574628,-93.821081
+12464,MN,Minnesota,Brimson,"Saint Louis",47.314162,-91.862521
+12465,MN,Minnesota,Britt,"Saint Louis",47.65496,-92.632062
+12466,MN,Minnesota,"Brook Park",Pine,45.938694,-92.98347
+12467,MN,Minnesota,Brooks,"Red Lake",47.812942,-96.011663
+12468,MN,Minnesota,Brookston,"Saint Louis",46.838425,-92.643005
+12469,MN,Minnesota,Brooten,Stearns,45.493171,-95.090049
+12470,MN,Minnesota,Browerville,Todd,46.090525,-94.834581
+12471,MN,Minnesota,"Browns Valley",Traverse,45.606934,-96.80625
+12472,MN,Minnesota,Brownsdale,Mower,43.724761,-92.873752
+12473,MN,Minnesota,Brownsville,Houston,43.670732,-91.301226
+12474,MN,Minnesota,Brownton,Mcleod,44.728145,-94.330611
+12475,MN,Minnesota,Bruno,Pine,46.284496,-92.618994
+12476,MN,Minnesota,Buckman,Morrison,45.8975,-94.093333
+12477,MN,Minnesota,Buffalo,Wright,45.181371,-93.863479
+12478,MN,Minnesota,"Buffalo Lake",Renville,44.770885,-94.591207
+12479,MN,Minnesota,Buhl,"Saint Louis",47.493611,-92.777778
+12480,MN,Minnesota,Burnsville,Dakota,44.767778,-93.2775
+12481,MN,Minnesota,Burtrum,Todd,45.88803,-94.696214
+12482,MN,Minnesota,Butterfield,Watonwan,43.965417,-94.795627
+12483,MN,Minnesota,Byron,Olmsted,44.037333,-92.630753
+12484,MN,Minnesota,Caledonia,Houston,43.622079,-91.483657
+12485,MN,Minnesota,Callaway,Becker,47.007642,-95.943964
+12486,MN,Minnesota,Calumet,Itasca,47.321944,-93.276667

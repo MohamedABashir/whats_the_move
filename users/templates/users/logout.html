@@ -1,0 +1,10 @@
+{% extends "Events/base.html" %}
+
+{%block content%}
+	<legend class="border-bottom mb-4">You are now logged out</legend>
+		<div class=" form-group border-top pt-3">
+				<small class="text-muted">
+				 <a href="{% url 'login' %}"> Sign in again</a>
+				</small>
+			</div>
+{% endblock content %}

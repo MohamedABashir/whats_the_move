@@ -1,0 +1,40 @@
+{% extends "Events/base.html" %}
+
+{%block content%}
+{% for cat in categories%}
+  {% if cat.category.all|length > 4%} 
+    <h2 style="text-align:left" class="cat-name">{{cat.name}}
+        <span style="float:right; font-size: 20px">
+          <a href="{% url 'category-detail' cats=cat.slug %}">See All</a>
+        </span>
+    </h2>
+    <div class="carousel" data-flickity='{ "wrapAround": "true" }'>
+    {% for event in cat.category.all %}
+           {% if event.not_expired%}
+            <div class="events">          
+              <div class="card" style="background: #e9e9e9;border:none">
+              <img src="{{event.event_img.url}}" style="border-radius: 25px; width:100%; height: 177px">
+              <a class="event-info" href="{{event.get_absolute_url}}">
+                <div class="event-topic code">{{event.event_date|date:"D, N j, h:i A"}}</div>
+                <p class="title">{{event.title}}</p>
+                <h3 class="event-host">{{event.host}}</h3>
+              </a>
+               <div class="row">
+                {% for i in event.attend.all%}
+                  {% if forloop.counter0 < 3%}
+                  <div class="column">
+                    <img style="border-radius: 50%;width:2em; height: 2em" src="{{i.profile.img.url}}" class="user"/>
+                  </div>
+                  {% endif %}
+                {% endfor %}
+                <span class="mt-2 ml-2">{{event.attend.count}}</span>
+            </div>
+            </div>
+        </div>
+      {%endif%}
+    {% endfor %}
+    </div>
+  {% endif %}
+{%endfor%}
+  
+{% endblock %}

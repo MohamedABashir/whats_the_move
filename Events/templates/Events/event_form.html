@@ -1,0 +1,29 @@
+{% extends "Events/base.html" %}
+
+{% load crispy_forms_tags%}
+{%block content%}
+<!-- <div class="container"> -->
+<div class="row">
+	<div class="col-md-8 offset-md-2" >
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token%}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Create New Event</legend>
+				{{form.media}}
+				{{form|crispy}}
+        {{form.errors}}
+			</fieldset>
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-info">Post</button>
+			</div>
+	</form>
+	</div>
+</div>
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
+    });
+  });
+</script>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends "Events/base.html" %}
+
+{% load crispy_forms_tags%}
+{%block content%}
+
+<div class="container">
+
+  <div class="form">
+    {% if form.errors %}
+    <form method="POST"class="register-form">
+      {% csrf_token%}
+       {% for field in form %}
+          {{field}}
+           {% for error in field.errors %} 
+            <p style="font-size: 0.7rem;" class="alert-danger">
+                   <strong>{{ error|escape }}</strong>
+              </p>
+           {% endfor %}
+       {% endfor %}
+      <button>Create</button>    
+     </form>
+     {%else%}
+    <form method="POST"class="register-form">
+      {% csrf_token%}
+      {{form.username}}
+      {{form.email}}
+      {{form.password1}}
+      {{form.password2}}
+      <button>Create</button>
+    </form>
+    {%endif%}
+    <p class="message">Already registered? <a href="{%url 'login'%}">Sign In</a></p>
+    <div class="mt-3">
+      <a style="color:black" href="{% url 'social:begin' 'google-oauth2' %}" class="px-2 fa-lg li-ic"><i class="fab fa-google"></i></a>
+    <!-- Twitter -->
+    <a  style="color:black"class="px-2 fa-lg tw-ic" href="{% url 'social:begin' 'twitter' %}"> <i class="fab fa-twitter"></i></a>
+    <!-- Dribbble -->
+    <a  style="color:black"class="px-2 fa-lg fb-ic" href="{% url 'social:begin' 'facebook' %}"><i class="fab fa-facebook-f"></i></a>    </div>
+  </div>
+</div>
+<!-- </div> -->
+{% endblock content %}
+ 

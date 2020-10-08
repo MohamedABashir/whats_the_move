@@ -1,0 +1,125 @@
+{% extends "Events/base.html" %}
+
+{% load comments %}
+{% load comments_xtd %}
+
+{%block content%}
+  <header>
+    <h1 >{{object.title}}</h1>
+  
+		<div>
+      <a href="{{object.host.profile.get_public_url}}">
+			<img  style="border-radius: 50%;width:5em;height:5em" src="{{object.host.profile.img.url}}" class="user"/>
+      </a>
+			<p style="display: inline-block; padding-top: 3px" class="mt-3 ml-2">Hosted by
+				<span class=""><strong>{{object.host}}</strong></span>
+			</p>
+		</div>
+  </header>
+  <hr>
+  <section class="candy-wrapper">
+    <article class="main">
+   	<img class="large-photo" src="{{object.event_img.url}}">
+   	<div>
+   		<h6 style="font-size: 2em;" class="mb-2"><strong>Details</strong></h6>
+   		{{object.description|safe}}
+   	</div>
+    </article><!-- Leave No Space 
+    --><hr class="hr-inv"><aside class="sidebar sticky-top">
+    	<h1 id="mtop"></h1>
+    	<div style="font-size:0.8em">
+	    	<i style="color:red" class="fas fa-clock fa-2x"></i>
+	    	{{object.event_date|date:"l, F j, Y h:i A T"}}
+	    	<!-- Monday, August 17, 2020 -->
+	    	</div>
+        <br class="sidebar-br">
+        <!-- <br class="sidebar-br"> -->
+        <!-- <br class="sidebar-br"> -->
+
+    		<a style="display: block; text-decoration: none; color:#000; font-size:0.8em"target="_blank" href="https://www.google.com/maps/search/?api=1&query={{object.event_location.1}}%2C{{object.event_location.0}}">
+    		<i style="color:blue;" class="fas fa-map-marker-alt fa-2x"></i>
+    		    {{location_name}}
+    		</a >
+    		<div>
+    			<br>
+  				<h6 style="font-size: 1em;" class="mb-2"><strong>Attendees( {{attendees}} )</strong></h6>
+    			<hr>
+    			 <div class="row">
+            {% if object.attend.all|length > 5%}
+                 <div class="column carousel" data-flickity='{ "wrapAround": "true" }'>
+                {% for i in object.attend.all%}
+                  <div style="align-items: center;">
+                    <a href="{{i.profile.get_public_url}}">
+                      <img style="border-radius: 50%;width:3em; height: 3em" src="{{i.profile.img.url}}" class="user"/>
+                    </a>
+                  </div>
+                {% endfor %}
+                </div>
+            {% else %}
+      			 	{% for i in object.attend.all%}
+  						  <div class="column">
+                  <a href="{{i.profile.get_public_url}}">
+                    <img style="border-radius: 50%;width:3em; height: 3em" src="{{i.profile.img.url}}" class="user"/>
+                  </a>
+  						  </div>
+  					  {% endfor %}
+            {% endif %}
+               {% if object.host == user%}
+                <div class="column mt-1 ml-2" style="padding-left: 0px;">
+                  <a type="submit" href="{%url 'event-update' object.id%}" class="btn btn-outline-secondary">Update</a>
+                  <a type="submit" href="{%url 'event-delete' object.id%}" class="btn btn-outline-danger">Delete</a>
+                </div>
+                {%endif%}
+				  </div>
+			</div>
+    </aside>
+  </section>
+  <hr>
+  <!-- comment section -->
+  {% get_comment_count for object as comment_count %}
+    <div class="py-4 text-center">
+      &nbsp;&sdot;&nbsp;
+      {{ comment_count }} comment{{ comment_count|pluralize }}
+      ha{{ comment_count|pluralize:"s,ve" }} been posted.
+    </div>
+    {% if comment_count %}
+    <ul class="media-list">
+      {% render_xtdcomment_tree for object allow_feedback show_feedback%}
+    </ul>
+    {% endif %}
+    
+<div class="card card-block mb-5" style="background-color: #e9e9e9;">
+  <div class="card-body">
+    <h4 class="card-title text-center pb-3">Post your comment</h4>
+      {% render_comment_form for object %}
+  </div>
+</div>
+
+
+<!-- comment end -->
+    {% if object.host != user%}
+      {% if event.not_expired%}
+        {%if user.is_authenticated and event.attend.exists%}
+        {%else%}
+          <div class="join" style="box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+            {% if user.is_authenticated %}
+                <span class="sticky-title">{{object.title}}</span>
+              <span class="sticky-host">{{object.host}}</span>
+              <form action="{% url 'join_event' object.pk%}" method="POST">
+                  {% csrf_token %}
+                  <button action="submit" name="event_pk" style="padding:20px;" value="{{event.pk}}" class="btn join-btn">Request to join</button> 
+                </form>
+            
+            {%else%}
+            <a style="padding:20px; color:white;" href="{%url 'login'%}" id="join-btn"class="btn join-btn">Login to request a spot</a> 
+            {% endif %}
+      </div>
+      {%endif%}
+
+      {%else%}
+        <div class="join" style=" background-color:#7a3333;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+          <h4>This Event has expired</h4>
+        </div>
+      {%endif%}
+    {% endif %}
+{% endblock content%}

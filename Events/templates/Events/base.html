@@ -1,0 +1,136 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- timepicker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+   
+    <!--  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- flicker css and js -->
+  <link rel="stylesheet" href="{% static 'Events/flickity.min.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+
+
+    <!-- tinymce resourse -->
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <!-- Prism JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Local css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Events/main.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/main.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/tabs.css'%}">
+
+    {% load mapbox_location_field_tags %}
+    {% location_field_includes %}
+    {% include_jquery %}
+    {{ form.media }}
+    {{ tinymce|safe }}
+   
+
+    {% if title %}
+        <title>WTM - {{ title }}</title>
+    {% else %}
+        <title>Where The Move</title>
+    {% endif %}
+    </style>
+</head>
+<body>
+  <header class="site-header">
+      <nav style="background-color: #417690;"class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'explore' %}">WTM</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'event-map' %}">Maps</a>
+            </div>
+            <!-- Navbar Right Side -->
+           
+            <div class="navbar-nav">
+               {% if user.is_authenticated %}
+                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                 <a class="nav-item nav-link" href="{% url 'create-event' %}">Create Event</a>
+               {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+              {% endif %}
+            </div>
+            
+          </div>
+        </div>
+      </nav>
+    </header>
+      {% if messages%}
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          {% for message in messages%}
+            <div class="alert alert-{{message.tags}}">
+              {{message}}
+            </div>
+          {% endfor %}
+        </div>      
+      </div>
+     {% endif %}
+  </div>
+     {% block content %}{% endblock %}
+     {%block script%}{%endblock%}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="{% static 'Events/flickity.min.js' %}" ></script>
+
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+    <script src="https://cdn.rawgit.com/filamentgroup/fixed-sticky/master/fixedsticky.js"></script>
+    <script src="https://kit.fontawesome.com/a892173171.js" crossorigin="anonymous"></script>
+    <script src="js/leaflet.awesome-markers.js"></script>
+
+   <script>
+    // This code activates flatpickr on fields with the 'datetimefield' class when the document has loaded
+    window.addEventListener("DOMContentLoaded", function () {
+        flatpickr(".datetimefield", {
+            enableTime: true,
+            enableSeconds: true,
+            dateFormat: "Y-m-d H:i:S",
+        });
+    });
+</script>
+  <script type="text/javascript">
+    $('#id_email').attr('placeholder', 'E-Mail');
+    $('#id_bio').attr('placeholder', 'My Bio');
+    $('#id_old_password').attr('placeholder', 'Old-Password');
+
+
+    $('#id_username').attr('placeholder', 'Username');
+    $('#id_password1').attr('placeholder', 'Password');
+    $('#id_password').attr('placeholder', 'Password');
+    $('#id_password2').attr('placeholder', 'Confirm Password');
+    $('#id_new_password1').attr('placeholder', 'New Password');
+    $('#id_new_password2').attr('placeholder', 'Confirm New Password');
+
+
+  </script>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <hr/>
+          <p class="text-center text-muted small">&copy; Copyright WhatsTheMove</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+</body>
+</html>
