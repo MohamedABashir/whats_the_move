@@ -1,7 +1,7 @@
 from Events import models as event_models
 from users import models as user_models
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
+from django.contrib.auth import User
 from django.shortcuts import get_object_or_404
 
 class UserSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class EventSerializer(serializers.ModelSerializer):
 				  'event_location','open_slot',
 				  'categories'
 				 ]
-                 
+
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
     events = EventSerializer(source='category', many=True)
