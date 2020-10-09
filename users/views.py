@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from Events.models import Event, Comments
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.models import User
 
 def register(request):
 	if request.method == "POST":
