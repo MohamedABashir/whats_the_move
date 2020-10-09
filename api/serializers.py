@@ -23,7 +23,7 @@ class EventSerializer(serializers.ModelSerializer):
     # comment = CommentSerializer(source="comments", many=True)
     class Meta:
         model = event_models.Event
-        fields = ["pk",'title', 'description', 'event_img','event_date',
+        fields = ["host","pk",'title', 'description', 'event_img','event_date',
 				  'event_location','open_slot',
 				  'categories'
 				 ]

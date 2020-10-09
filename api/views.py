@@ -18,7 +18,7 @@ class CategoryView(viewsets.ReadOnlyModelViewSet):
     serializer_class = CategoryDetailSerializer
 
 class EventView(viewsets.ModelViewSet):
-    permission_classes = (IsAuthorOrReadOnly,) 
+    permission_classes = [IsAuthorOrReadOnly & (p.IsAuthenticatedOrReadOnly)]
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     parser_classes = (MultiPartParser, FormParser)
