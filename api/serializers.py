@@ -27,6 +27,7 @@ class EventSerializer(serializers.ModelSerializer):
 				  'event_location','open_slot',
 				  'categories'
 				 ]
+                 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
     events = EventSerializer(source='category', many=True)
