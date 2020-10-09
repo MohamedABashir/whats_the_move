@@ -3,8 +3,7 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from Events.models import Event, Comments
-from django.contrib.auth.models import User
-
+from django.contrib.auth import authenticate, login
 
 
 def register(request):
@@ -13,7 +12,11 @@ def register(request):
 		if form.is_valid():
 			form.save()
 			username = form.cleaned_data.get('username')
-			messages.success(request, f'Account Created For {username}')
+			messages.info(request, f'{username}, Thanks for registering. You are now logged in.')
+			new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+			login(request, new_user)
 			return redirect('explore')
 	else:
 		form = UserRegisterForm()
