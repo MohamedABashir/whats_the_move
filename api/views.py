@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 
 from Events.models import Category, Event, Comments
 from users.models import Profile
+from django_comments_xtd.api.serializers import ReadCommentSerializer
 
 
 from .permissions import IsAuthorOrReadOnly
@@ -47,3 +48,10 @@ def join_event(request, eventid):
         event.open_slot-=1
         return Response({"message": "Added to the event"})
     return Response({"message": "failed to be added"})
+
+class CommentList(generics.ListAPIView):
+    serializer_class = ReadCommentSerializer
+    def get_queryset(self, **kwargs):
+        u_id = self.kwargs.get('userid', None)
+        return Comments.objects.filter(user_id=u_id)
+

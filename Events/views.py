@@ -136,13 +136,12 @@ class EventDetailView(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		latlng = context['event'].event_location
-		event = get_object_or_404(Event, id=self.kwargs['pk'])
+		event = get_object_or_404(Event, slug=self.kwargs['slug'])
 		attendees = event.number_of_attendees()
 		try:
 			latlng = [latlng[1], latlng[0]]
 			g = geocoder.mapbox(latlng, method='reverse', key=os.environ.get('MAPBOX_API_KEY'))
 		except ValueError as e :
-			print(e)
 			latlng = context['event'].event_location
 			g = geocoder.mapbox(latlng, method='reverse', key=os.environ.get('MAPBOX_API_KEY'))
 

@@ -28,7 +28,7 @@ d = os.environ.get("DEBUG")
 if d == 'production':   
     DEBUG = False
 else:
-    DEBUG=True
+    DEBUG=False
 
 ALLOWED_HOSTS = [
      'whats-the-moove.herokuapp.com','localhost'
@@ -82,6 +82,9 @@ REST_FRAMEWORK = {
         'api.permissions.APIRequestAuthentication'
         ],
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' ,
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
 }
 
 

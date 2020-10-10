@@ -12,7 +12,7 @@ from .views import (
 urlpatterns = [
 	path('', explore, name='explore' ),
 	path('category/<str:cats>/', category_detail, name='category-detail'),	
-	path('events/<str:cats>/<slug:slug>/<int:pk>', EventDetailView.as_view(), name='event-detail'),	
+	path('events/<str:cats>/<slug:slug>/', EventDetailView.as_view(), name='event-detail'),	
 	path('events/<int:pk>/update/', EventUpdateView.as_view(), name='event-update'),
 	path('events/<int:pk>/delete/', EventDeleteView.as_view(), name='event-delete'),		
 	path('events/new/', EventCreateView.as_view(), name='create-event'),
