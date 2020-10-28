@@ -97,29 +97,22 @@
 
 
 <!-- comment end -->
+{%if user.is_authenticated%}
     {% if object.host != user%}
-      {% if event.not_expired%}
-        {%if user.is_authenticated and event.attend.exists%}
-        {%else%}
-          <div class="join" style="box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
-            {% if user.is_authenticated %}
-                <span class="sticky-title">{{object.title}}</span>
-              <span class="sticky-host">{{object.host}}</span>
-              <form action="{% url 'join_event' object.pk%}" method="POST">
-                  {% csrf_token %}
-                  <button action="submit" name="event_pk" style="padding:20px;" value="{{event.pk}}" class="btn join-btn">Request to join</button> 
-                </form>
-            
-            {%else%}
-            <a style="padding:20px; color:white;" href="{%url 'login'%}" id="join-btn"class="btn join-btn">Login to request a spot</a> 
-            {% endif %}
+      {% if even.not_expired and event.open_slot > 5%}
+      <div class="join" style="box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+            <span class="sticky-title">{{object.title}}</span>
+          <span class="sticky-host">{{object.host}}</span>
+          <form action="{% url 'join_event' object.pk%}" method="POST">
+              {% csrf_token %}
+              <button action="submit" name="event_pk" style="padding:20px;" value="{{event.pk}}" class="btn join-btn">Request to join</button> 
+            </form>
+      </div>
+      {%else%}
+      <div class="join" style="box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+        <p>Event is not Available</p>
       </div>
       {%endif%}
-
-      {%else%}
-        <div class="join" style=" background-color:#7a3333;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
-          <h4>This Event has expired</h4>
-        </div>
-      {%endif%}
-    {% endif %}
+    {%endif%}
+{%endif%}
 {% endblock content%}

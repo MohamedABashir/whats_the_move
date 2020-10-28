@@ -44,7 +44,7 @@ class Event(models.Model):
 	def __str__(self):
 		return self.title
 	def get_absolute_url(self):
-		return reverse('event-detail', kwargs={'cats':self.categories.slug, 'slug':self.slug})
+		return reverse('event-detail', kwargs={'cats':self.categories.slug, 'slug':self.slug, 'pk': self.pk})
 	def number_of_attendees(self):
 		return self.attend.all().count
 	def not_expired(self):

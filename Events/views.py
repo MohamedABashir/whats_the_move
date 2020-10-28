@@ -91,7 +91,7 @@ def category_detail(request, cats):
 	 {'event_category':event_category, 'title':'Category'})
 
 def join_event(request,pk):
-	event = get_object_or_404(Event, id=request.POST.get('event_pk'))
+	event = get_object_or_404(Event, id=pk)
 	if event.not_expired() and event.open_slot>0:
 		event.attend.add(request.user)
 		event.open_slot-=1
