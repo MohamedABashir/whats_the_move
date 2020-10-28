@@ -99,7 +99,7 @@
 <!-- comment end -->
 {%if user.is_authenticated%}
     {% if object.host != user%}
-      {% if even.not_expired and event.open_slot > 5%}
+      {% if object.not_expired and object.open_slot > 0%}
       <div class="join" style="box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
             <span class="sticky-title">{{object.title}}</span>
           <span class="sticky-host">{{object.host}}</span>
