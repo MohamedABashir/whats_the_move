@@ -4,15 +4,18 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = ["id", "username",]
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=user_models.Profile
         fields="__all__"
+        
+class UserSerializer(serializers.ModelSerializer):
+    Profile = ProfileSerializer(source='profile')
+    class Meta:
+        model = get_user_model()
+        fields = ["id", "username","Profile",]
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:

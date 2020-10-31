@@ -1,10 +1,13 @@
 from django.urls import path
-from .views import CategoryView, EventView, ProfileView,UserListView,join_event,CommentList
 from rest_framework import routers
+
+from .views import (AllEventByUser, CategoryView, CommentList, EventView,
+                    ProfileView, UserListView, join_event)
 
 urlpatterns = [
     path('join/<int:eventid>/',join_event),
     path('user-comments/<int:userid>/',CommentList.as_view()),
+    path('user-events/<int:userid>/',AllEventByUser.as_view()),
 
 ]
 

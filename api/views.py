@@ -55,3 +55,8 @@ class CommentList(generics.ListAPIView):
         u_id = self.kwargs.get('userid', None)
         return Comments.objects.filter(user_id=u_id)
 
+class AllEventByUser(generics.ListAPIView):
+    serializer_class = EventSerializer
+    def get_queryset(self, **kwargs):
+            u_id = self.kwargs.get('userid', None)
+            return Event.objects.filter(host=u_id)
