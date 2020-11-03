@@ -16,6 +16,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ["id", "username","Profile",]
+class UsernameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['username',]
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,12 +27,14 @@ class CommentSerializer(serializers.ModelSerializer):
         fields="__all__"
 
 class EventSerializer(serializers.ModelSerializer):
+    username = UsernameSerializer(source='host')
+    print(username)
     # comment = CommentSerializer(source="comments", many=True)
     class Meta:
         model = event_models.Event
         fields = ["host","pk",'title', 'description', 'event_img','event_date',
 				  'event_location','open_slot',
-				  'categories'
+				  'categories', 'username'
 				 ]
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
