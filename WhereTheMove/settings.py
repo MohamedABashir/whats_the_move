@@ -24,11 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-d = os.environ.get("DEBUG")
-if d == 'production':   
-    DEBUG = False
-else:
-    DEBUG=False
+DEBUG = os.environ.get("DEBUG") != 'production'
+ 
 
 ALLOWED_HOSTS = [
      'whats-the-moove.herokuapp.com','localhost'
